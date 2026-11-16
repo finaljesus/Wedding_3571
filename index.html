@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>홍길동 그리고 김영희 결혼합니다</title>
+<meta name="description" content="2027년 5월 22일 토요일 오후 2시, 저희 두 사람이 결혼합니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&family=Noto+Serif+KR:wght@400;500&display=swap" rel="stylesheet">
+<!--
+  실제 값으로 바꿔야 할 곳 (지금은 모두 가짜 예시 값)
+  1. 이름: 홍길동, 김영희 (title, header h1, 소개, 인사말, footer)
+  2. 부모님 성함: 홍판서, 이사또
+  3. 날짜와 시간: 2027년 5월 22일 토요일 오후 2시
+  4. 장소와 주소: 샘플웨딩홀 3층, 서울특별시 샘플구 샘플로 123
+  5. 전화번호: 010-0000-0000 (소개 카드, 참석 알림 문자)
+  6. 계좌: 샘플은행 000-0000-0000
+-->
+<style>
+:root {
+  --color-ivory: #FBF8F2;
+  --color-sand: #EFE5D6;
+  --color-olive: #6F7F5A;
+  --color-olive-dark: #5E6D4B;
+  --color-charcoal: #2B2A28;
+  --color-gray: #7A746B;
+  --color-line: #D9CDBA;
+
+  --font-serif: "Noto Serif KR", serif;
+  --font-sans: "Noto Sans KR", sans-serif;
+
+  --radius-card: 12px;
+  --radius-button: 999px;
+  --radius-photo: 4px;
+
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-6: 48px;
+  --space-8: 64px;
+  --space-12: 96px;
+
+  --content-width: 480px;
+  --nav-height: 48px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--color-sand);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.8;
+  font-weight: 400;
+  -webkit-text-size-adjust: 100%;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+a { color: var(--color-olive); text-decoration: underline; text-underline-offset: 3px; }
+a:hover { color: var(--color-charcoal); }
+
+:focus-visible { outline: 2px solid var(--color-olive); outline-offset: 2px; }
+
+.page {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  background: var(--color-ivory);
+  position: relative;
+}
+
+h1, h2 { font-family: var(--font-serif); font-weight: 500; margin: 0; }
+
+p { margin: 0; }
+
+.small { font-size: 14px; line-height: 1.6; color: var(--color-gray); }
+
+/* ---------- header ---------- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  text-align: center;
+  background: var(--color-sand);
+}
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to bottom, rgba(251,248,242,0.85) 0%, rgba(251,248,242,0.55) 30%, rgba(251,248,242,0) 55%);
+}
+.hero-text {
+  position: relative;
+  z-index: 2;
+  padding: calc(var(--nav-height) + var(--space-3)) var(--space-3) 0;
+}
+.hero-lead { font-size: 14px; letter-spacing: 0.2em; color: var(--color-charcoal); }
+.hero h1 {
+  margin-top: var(--space-2);
+  font-size: 32px;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+}
+.hero h1 .and {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--color-olive);
+}
+.hero-date { margin-top: var(--space-2); font-size: 16px; line-height: 1.6; }
+.hero-place { font-size: 14px; color: var(--color-charcoal); line-height: 1.6; }
+.hero-down {
+  position: absolute;
+  z-index: 2;
+  bottom: var(--space-3);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-button);
+  background: rgba(251,248,242,0.85);
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: var(--color-charcoal);
+}
+
+/* ---------- nav ---------- */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--content-width);
+  height: var(--nav-height);
+  z-index: 20;
+  background: rgba(251,248,242,0.9);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-line);
+}
+.nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 var(--space-2);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav ul::-webkit-scrollbar { display: none; }
+.nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 4px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  color: var(--color-charcoal);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+.nav a:hover { color: var(--color-olive); }
+.nav a.active { color: var(--color-olive); border-bottom-color: var(--color-olive); }
+
+/* ---------- section ---------- */
+section {
+  padding: var(--space-8) var(--space-3);
+  scroll-margin-top: var(--nav-height);
+  text-align: center;
+}
+section.alt { background: var(--color-sand); }
+section > * + * { margin-top: var(--space-3); }
+
+h2 { font-size: 22px; letter-spacing: 0.05em; line-height: 1.5; }
+h2::after {
+  content: "";
+  display: block;
+  width: 32px;
+  height: 1px;
+  margin: var(--space-2) auto 0;
+  background: var(--color-olive);
+}
+
+.photo { width: 100%; border-radius: var(--radius-photo); }
+.photo-tall { aspect-ratio: 2 / 3; object-fit: cover; }
+
+.parents { font-size: 14px; color: var(--color-gray); line-height: 1.9; }
+.parents strong { color: var(--color-charcoal); font-weight: 500; }
+
+/* profile */
+.cards { display: grid; gap: var(--space-3); grid-template-columns: 1fr; }
+.card {
+  background: var(--color-ivory);
+  border-radius: var(--radius-card);
+  padding: var(--space-2);
+  box-shadow: 0 2px 12px rgba(43,42,40,0.08);
+}
+.card img { aspect-ratio: 1 / 1; object-fit: cover; object-position: center top; width: 100%; border-radius: var(--radius-photo); }
+.card h3 { font-family: var(--font-serif); font-weight: 500; font-size: 18px; margin: var(--space-2) 0 0; }
+.card .role { font-size: 14px; color: var(--color-olive); }
+.card p + p { margin-top: var(--space-1); }
+
+/* buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  min-width: 44px;
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-button);
+  border: 1px solid var(--color-olive);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+.btn-fill { background: var(--color-olive); color: var(--color-ivory); }
+.btn-fill:hover { background: var(--color-olive-dark); border-color: var(--color-olive-dark); color: var(--color-ivory); }
+.btn-line { background: transparent; color: var(--color-olive); }
+.btn-line:hover { background: rgba(111,127,90,0.12); color: var(--color-olive); }
+.btn-block { width: 100%; }
+
+/* gallery */
+.gallery { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-1); }
+.gallery button {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  border-radius: var(--radius-photo);
+  overflow: hidden;
+}
+.gallery button:first-child { grid-column: 1 / -1; }
+.gallery img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.gallery button:first-child img { aspect-ratio: 4 / 5; object-position: center top; }
+
+dialog.viewer {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+dialog.viewer::backdrop { background: rgba(43,42,40,0.88); }
+.viewer-box { display: flex; flex-direction: column; align-items: center; gap: var(--space-2); padding: var(--space-2); }
+.viewer-box img { max-width: 100%; max-height: 80vh; border-radius: var(--radius-photo); }
+
+/* info */
+.info-main { font-family: var(--font-serif); font-size: 18px; font-weight: 500; line-height: 1.8; }
+.info-sub { color: var(--color-gray); font-size: 14px; }
+.guide { text-align: left; background: var(--color-ivory); border-radius: var(--radius-card); padding: var(--space-3); }
+.guide dl { margin: 0; }
+.guide dt { font-size: 14px; font-weight: 500; color: var(--color-olive); margin-top: var(--space-2); }
+.guide dt:first-child { margin-top: 0; }
+.guide dd { margin: 0; font-size: 14px; line-height: 1.7; }
+
+/* gift */
+.gift-note { font-size: 14px; color: var(--color-gray); }
+details {
+  text-align: left;
+  background: var(--color-sand);
+  border-radius: var(--radius-card);
+  padding: 0 var(--space-3);
+}
+details[open] { padding-bottom: var(--space-3); }
+details + details { margin-top: var(--space-2); }
+summary {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 500;
+}
+.account { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); flex-wrap: wrap; }
+.account p { font-size: 14px; line-height: 1.7; }
+.account .btn { min-height: 44px; padding: 0 var(--space-3); }
+.toast { min-height: 24px; font-size: 14px; color: var(--color-olive); }
+
+/* rsvp */
+form { text-align: left; display: grid; gap: var(--space-3); }
+fieldset { border: 0; margin: 0; padding: 0; }
+legend, label.lbl { font-size: 14px; font-weight: 500; margin-bottom: var(--space-1); display: block; padding: 0; }
+.choices { display: flex; gap: var(--space-2); }
+.choices label {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  background: var(--color-ivory);
+  cursor: pointer;
+  font-size: 14px;
+}
+.choices input { position: absolute; opacity: 0; pointer-events: none; }
+.choices label:has(input:checked) { border-color: var(--color-olive); color: var(--color-olive); font-weight: 500; }
+.choices label:has(input:focus-visible) { outline: 2px solid var(--color-olive); outline-offset: 2px; }
+input[type="number"], textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px var(--space-2);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  background: var(--color-ivory);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+  font-size: 16px;
+}
+textarea { min-height: 96px; resize: vertical; line-height: 1.6; }
+input[type="number"]:focus, textarea:focus { border-color: var(--color-olive); outline: none; }
+
+/* footer */
+footer {
+  background: var(--color-sand);
+  border-top: 1px solid var(--color-line);
+  color: var(--color-gray);
+  text-align: center;
+  padding: var(--space-8) var(--space-3) var(--space-6);
+  font-size: 14px;
+  line-height: 1.8;
+}
+footer > * + * { margin-top: var(--space-2); }
+footer .thanks { font-family: var(--font-serif); font-size: 16px; color: var(--color-charcoal); }
+.share { display: flex; gap: var(--space-1); justify-content: center; flex-wrap: wrap; }
+
+/* movement */
+.js .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.js .reveal.visible { opacity: 1; transform: none; }
+
+@media (min-width: 481px) {
+  .cards { grid-template-columns: 1fr 1fr; }
+  section { padding-top: var(--space-12); padding-bottom: var(--space-12); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  * { transition: none !important; animation: none !important; }
+}
+</style>
+<script>document.documentElement.className += " js";</script>
+</head>
+<body>
+<div class="page" id="top">
+
+  <header class="hero">
+    <img class="hero-photo" src="image/05-hero.jpg" alt="정원에서 손을 잡고 나란히 서 있는 신랑과 신부" width="1024" height="1536">
+    <div class="hero-text">
+      <p class="hero-lead">저희 결혼합니다</p>
+      <h1><span>홍길동</span><span class="and">그리고</span><span>김영희</span></h1>
+      <p class="hero-date">2027년 5월 22일 토요일 오후 2시</p>
+      <p class="hero-place">샘플웨딩홀 3층</p>
+    </div>
+    <p class="hero-down">아래로 내려 보세요</p>
+  </header>
+
+  <nav class="nav" aria-label="바로가기 메뉴">
+    <ul>
+      <li><a href="#greeting">인사말</a></li>
+      <li><a href="#profile">소개</a></li>
+      <li><a href="#gallery">갤러리</a></li>
+      <li><a href="#info">예식 안내</a></li>
+      <li><a href="#gift">마음 전하기</a></li>
+      <li><a href="#rsvp">참석 알림</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="greeting" class="reveal">
+      <h2>초대합니다</h2>
+      <img class="photo photo-tall" src="image/03-couple-full.jpg" alt="정원 돌길에서 손을 잡고 서 있는 두 사람" width="1024" height="1536" loading="lazy">
+      <p>
+        서로 다른 길을 걸어온 두 사람이<br>
+        이제 같은 길을 함께 걸어가려 합니다.<br>
+        소중한 분들을 모시고<br>
+        저희의 첫걸음을 나누고 싶습니다.<br>
+        함께 자리하시어 축복해 주시면<br>
+        더없는 기쁨으로 간직하겠습니다.
+      </p>
+      <p class="parents">
+        <strong>홍판서</strong>의 장남 <strong>홍길동</strong><br>
+        <strong>이사또</strong>의 장녀 <strong>김영희</strong>
+      </p>
+    </section>
+
+    <section id="profile" class="alt reveal">
+      <h2>신랑 신부를 소개합니다</h2>
+      <div class="cards">
+        <article class="card">
+          <img src="image/01-groom.jpg" alt="턱시도를 입고 미소 짓는 신랑" width="1024" height="1536" loading="lazy">
+          <h3>홍길동</h3>
+          <p class="role">신랑</p>
+          <p class="small">웃음이 많고 따뜻한 사람입니다.</p>
+          <p><a class="btn btn-line" href="tel:010-0000-0000">신랑에게 전화</a></p>
+        </article>
+        <article class="card">
+          <img src="image/02-bride.jpg" alt="흰 드레스를 입고 부케를 든 신부" width="1024" height="1536" loading="lazy">
+          <h3>김영희</h3>
+          <p class="role">신부</p>
+          <p class="small">차분하고 다정한 사람입니다.</p>
+          <p><a class="btn btn-line" href="tel:010-0000-0000">신부에게 전화</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="gallery" class="reveal">
+      <h2>우리의 순간들</h2>
+      <div class="gallery">
+        <button type="button" data-full="image/06-walking.jpg" data-alt="서로를 바라보며 웃고 걸어가는 두 사람">
+          <img src="image/06-walking.jpg" alt="서로를 바라보며 웃고 걸어가는 두 사람" width="1024" height="1536" loading="lazy">
+        </button>
+        <button type="button" data-full="image/04-couple-close.jpg" data-alt="가까이 기대어 웃고 있는 두 사람과 흰 장미 부케">
+          <img src="image/04-couple-close.jpg" alt="가까이 기대어 웃고 있는 두 사람과 흰 장미 부케" width="1024" height="1536" loading="lazy">
+        </button>
+        <button type="button" data-full="image/07-rings.jpg" data-alt="맞잡은 두 손과 결혼반지">
+          <img src="image/07-rings.jpg" alt="맞잡은 두 손과 결혼반지" width="1200" height="800" loading="lazy">
+        </button>
+      </div>
+      <p class="small">사진을 누르면 크게 볼 수 있습니다.</p>
+    </section>
+
+    <section id="info" class="alt reveal">
+      <h2>예식 안내</h2>
+      <p class="info-main">2027년 5월 22일 토요일<br>오후 2시</p>
+      <p class="info-main">샘플웨딩홀 3층</p>
+      <p class="info-sub">서울특별시 샘플구 샘플로 123</p>
+      <p><a class="btn btn-fill" href="https://map.naver.com/p/search/%EC%83%98%ED%94%8C%EC%9B%A8%EB%94%A9%ED%99%80" target="_blank" rel="noopener">지도 보기</a></p>
+      <div class="guide">
+        <dl>
+          <dt>지하철</dt>
+          <dd>샘플역 1번 출구에서 도보 5분</dd>
+          <dt>버스</dt>
+          <dd>샘플웨딩홀 앞 정류장 하차</dd>
+          <dt>주차</dt>
+          <dd>건물 지하 주차장 이용 (2시간 무료)</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section id="gift" class="reveal">
+      <h2>마음 전하실 곳</h2>
+      <p class="gift-note">참석이 어려워 마음만 전하실 분들을 위해<br>계좌를 안내드립니다. 부담 갖지 않으셔도 됩니다.</p>
+      <div>
+        <details>
+          <summary>신랑 측 계좌</summary>
+          <div class="account">
+            <p>샘플은행 000-0000-0000<br>예금주 홍길동</p>
+            <button type="button" class="btn btn-line" data-copy="000-0000-0000">복사</button>
+          </div>
+        </details>
+        <details>
+          <summary>신부 측 계좌</summary>
+          <div class="account">
+            <p>샘플은행 000-0000-0000<br>예금주 김영희</p>
+            <button type="button" class="btn btn-line" data-copy="000-0000-0000">복사</button>
+          </div>
+        </details>
+      </div>
+      <p class="toast" id="toast" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="rsvp" class="alt reveal">
+      <h2>참석 여부 알려 주세요</h2>
+      <p class="small">아래 내용을 적고 보내기를 누르면<br>문자 앱이 열립니다.</p>
+      <form id="rsvp-form">
+        <fieldset>
+          <legend>참석 여부</legend>
+          <div class="choices">
+            <label><input type="radio" name="attend" value="참석" checked>참석</label>
+            <label><input type="radio" name="attend" value="불참">불참</label>
+          </div>
+        </fieldset>
+        <div>
+          <label class="lbl" for="count">참석 인원</label>
+          <input type="number" id="count" name="count" min="1" max="10" value="1" inputmode="numeric">
+        </div>
+        <div>
+          <label class="lbl" for="msg">전하실 말씀</label>
+          <textarea id="msg" name="msg" maxlength="100" placeholder="축하 인사를 남겨 주세요"></textarea>
+        </div>
+        <button type="submit" class="btn btn-fill btn-block">문자로 보내기</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p class="thanks">와 주시는 모든 분께<br>진심으로 감사드립니다.</p>
+    <p>홍길동 그리고 김영희<br>2027년 5월 22일</p>
+    <div class="share">
+      <button type="button" class="btn btn-line" id="share-link">주소 복사</button>
+      <a class="btn btn-line" id="share-sms" href="sms:?body=">문자로 공유</a>
+    </div>
+    <p><a href="#top">맨 위로</a></p>
+  </footer>
+
+</div>
+
+<dialog class="viewer" id="viewer" aria-label="사진 크게 보기">
+  <div class="viewer-box">
+    <img id="viewer-img" src="" alt="">
+    <button type="button" class="btn btn-fill" id="viewer-close">닫기</button>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  "use strict";
+
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // 나타나는 움직임
+  var reveals = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window && !reduce) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(function (el) { io.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add("visible"); });
+  }
+
+  // 지금 보고 있는 섹션 메뉴 표시
+  var links = Array.prototype.slice.call(document.querySelectorAll(".nav a"));
+  var sections = links.map(function (a) { return document.querySelector(a.getAttribute("href")); });
+  function setActive() {
+    var y = window.scrollY + 48 + window.innerHeight * 0.3;
+    var current = -1;
+    sections.forEach(function (s, i) { if (s && s.offsetTop <= y) { current = i; } });
+    links.forEach(function (a, i) {
+      if (i === current) { a.classList.add("active"); a.setAttribute("aria-current", "true"); }
+      else { a.classList.remove("active"); a.removeAttribute("aria-current"); }
+    });
+  }
+  window.addEventListener("scroll", setActive, { passive: true });
+  window.addEventListener("resize", setActive);
+  setActive();
+
+  // 사진 크게 보기
+  var viewer = document.getElementById("viewer");
+  var viewerImg = document.getElementById("viewer-img");
+  document.querySelectorAll(".gallery button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      viewerImg.src = b.getAttribute("data-full");
+      viewerImg.alt = b.getAttribute("data-alt");
+      if (viewer.showModal) { viewer.showModal(); } else { viewer.setAttribute("open", ""); }
+    });
+  });
+  document.getElementById("viewer-close").addEventListener("click", function () {
+    if (viewer.close) { viewer.close(); } else { viewer.removeAttribute("open"); }
+  });
+  viewer.addEventListener("click", function (e) {
+    if (e.target === viewer && viewer.close) { viewer.close(); }
+  });
+
+  // 복사 기능
+  var toast = document.getElementById("toast");
+  var timer;
+  function say(msg) {
+    toast.textContent = msg;
+    clearTimeout(timer);
+    timer = setTimeout(function () { toast.textContent = ""; }, 2000);
+  }
+  function copyText(text, done, fail) {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done, fail);
+      return;
+    }
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (err) { ok = false; }
+    document.body.removeChild(ta);
+    if (ok) { done(); } else { fail(); }
+  }
+  document.querySelectorAll("[data-copy]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      copyText(b.getAttribute("data-copy"),
+        function () { say("복사되었습니다"); },
+        function () { say("복사하지 못했습니다. 직접 눌러 복사해 주세요"); });
+    });
+  });
+  document.getElementById("share-link").addEventListener("click", function () {
+    copyText(location.href,
+      function () { say("주소가 복사되었습니다"); },
+      function () { say("복사하지 못했습니다"); });
+    toast.scrollIntoView({ block: "nearest" });
+  });
+  document.getElementById("share-sms").addEventListener("click", function () {
+    this.setAttribute("href", "sms:?body=" + encodeURIComponent("홍길동 그리고 김영희 결혼합니다 " + location.href));
+  });
+
+  // 참석 알림 (문자 앱 열기)
+  document.getElementById("rsvp-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var f = e.target;
+    var attend = f.elements.attend.value;
+    var count = f.elements.count.value || "1";
+    var msg = f.elements.msg.value.trim();
+    var body = "[청첩장 답변] " + attend + (attend === "참석" ? ", " + count + "명" : "") + (msg ? "\n" + msg : "");
+    location.href = "sms:010-0000-0000?body=" + encodeURIComponent(body);
+  });
+})();
+</script>
+</body>
+</html>
